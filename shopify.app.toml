@@ -1,0 +1,30 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "a84eddd723b3a9036cb555b1fd86fca7"
+name = "OP Orders Bundle"
+application_url = "https://shopify-orders.objectifpapillon.fr"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,read_orders,read_customers"
+#use_legacy_install_flow = true
+
+[auth]
+redirect_urls = [ 
+  "https://shopify-orders.objectifpapillon.fr/api/auth",
+]
